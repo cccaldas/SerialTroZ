@@ -13,6 +13,8 @@
   "dependencies": {
     "async": "^2.6.1",
     "clear": "^0.1.0",
+    "fs": "0.0.1-security",
+    "play-sound": "^1.1.2",
     "select-shell": "^1.1.2",
     "serialport": "^7.0.2"
   }

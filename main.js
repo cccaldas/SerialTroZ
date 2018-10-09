@@ -4,6 +4,8 @@ const async 				= require('async');
 const SerialPort 		= require('serialport');
 const stream 				= process.stdin;
 const consoleClear 	= require('clear');
+const fs 						= require('fs');
+const musicPlayer 	= require('play-sound')({})
 
 var serialPorts				= [];
 var selectedPort 			= '';
@@ -28,6 +30,12 @@ function main() {
 }
 
 function welcome(callback) {
+	consolePrint('SerialTroz 1.0');
+
+	playSound();
+
+	printAlbatroz();
+	
 	callback(null);
 }
 
@@ -75,7 +83,9 @@ function selectBaudrate(callback) {
 }
 
 function startReading(callback) {
-	consolePrint('Start reading port: '+ selectedPort +' baudRate: '+ selectedBaudRate);
+	consoleClear();
+
+	consolePrint('Start reading port: '+ selectedPort +' baudRate: '+ selectedBaudRate, true);
 
 	var port = new SerialPort(selectedPort, { baudRate: selectedBaudRate });
 
@@ -136,6 +146,20 @@ function consolePrint(msg, breakLine=false) {
 	}
 }
 
+function printAlbatroz() {
+	var px = fs.readFileSync('albatroz.px', 'utf8');
+	console.log(px);
+}
+
+function playSound() {
+	musicPlayer.play('music.mp3', function(err){
+	  if (err) throw err
+	})
+}
+
+function stopSound() {
+
+}
 
 function bufferToString(buffer) {
 	var buff = new Buffer(buffer, 'utf8'); //no sure about this
