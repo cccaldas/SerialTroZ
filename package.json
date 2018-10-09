@@ -1,0 +1,19 @@
+{
+  "name": "serialtroz",
+  "version": "1.0.0",
+  "description": "node.js usb serial reading CLI based on albatroz conceptc",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node main.js",
+    "build": "node main.js"
+  },
+  "author": "Cristiano Caldas",
+  "license": "ISC",
+  "dependencies": {
+    "async": "^2.6.1",
+    "clear": "^0.1.0",
+    "select-shell": "^1.1.2",
+    "serialport": "^7.0.2"
+  }
+}
